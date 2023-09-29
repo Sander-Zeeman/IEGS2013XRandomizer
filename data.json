@@ -146,7 +146,7 @@
         { "has_uniform": false, "name": "Secret 2"                             },
         { "has_uniform": false, "name": "Secret 3"                             }
     ],
-    "managers": [
+    "coaches": [
         { "name": "Mark Evans"          },
         { "name": "Jude Sharp"          },
         { "name": "Seymour Hillman"     },
@@ -157,13 +157,13 @@
         { "name": "Byron Love"          },
         { "name": "Clark von Wunderbar" }
     ],
-    "assistants": [
+    "managers": [
         { "name": "Skie Blue"       },
         { "name": "Rosie Redd"      },
         { "name": "Jade Greene"     },
         { "name": "Silvia Woods"    },
         { "name": "Celia Hills"     },
-        { "name": "Nelly Evans"     },
+        { "name": "Nelly Raimon"    },
         { "name": "Camellia Travis" },
         { "name": "Aurelia Dingle"  }
     ],
