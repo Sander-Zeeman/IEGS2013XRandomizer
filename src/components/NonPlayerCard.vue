@@ -6,21 +6,34 @@ interface Props {
   prefix: String;
 }
 
-defineProps<Props>();
+const props = defineProps<Props>();
+
+const imgPath = name_to_img(props.name, props.prefix);
 </script>
 
 <template>
-  <div class="card" :style="{ backgroundImage: 'url(' + name_to_img(name, prefix) + ')' }"></div>
+  <div class="card">
+    <img :src="imgPath.toString()" :alt="name.toString()" class="image"/>
+    <h2 class="name">{{ name }}</h2>
+  </div>
 </template>
 
 <style scoped>
 .card {
   border: 2px;
   border-style: solid;
-  border-radius: 20px;
-  background-size: cover;
-  background-position: center;
-  width: 300px;
-  height: 300px;
+  border-radius: 15px;
+  width: 40%;
+}
+
+.image {
+  width: 100%;
+  border-radius: 15px 15px 0 0;
+}
+
+.name {
+  text-align: center;
+  margin: 0;
+  margin-bottom: 10px
 }
 </style>

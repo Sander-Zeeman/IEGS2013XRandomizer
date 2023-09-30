@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 from json import load
 from os.path import isfile
 

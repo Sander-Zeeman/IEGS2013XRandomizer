@@ -36,7 +36,7 @@ const formation = ref('4-4-2');
   <main>
     <h1 class="title">Inazuma Eleven GO Strikers 2013 Xtreme Randomizer</h1>
     <div id="PlayerCards">
-      <h2>Players</h2>
+      <h2 class="subtitle">Players</h2>
       <div class="CardGroup">
         <div v-for="(player, idx) in players" :key="idx">
           <PlayerCard :name="player" team="Raimon" :position="pos" :index="idx" />
@@ -44,22 +44,24 @@ const formation = ref('4-4-2');
       </div>
     </div>
     <div id="SupportCards">
-      <h2>Support</h2>
+      <h2 class="subtitle">Support</h2>
       <div class="CardGroup">
         <NonPlayerCard :name="coach" prefix="coaches" />
         <NonPlayerCard :name="manager" prefix="managers" />
       </div>
     </div>
     <div id="OutfitCards">
-      <h2>Outfit</h2>
+      <h2 class="subtitle">Outfit</h2>
       <div class="CardGroup">
         <NonPlayerCard :name="outfit" prefix="emblems" />
         <NonPlayerCard :name="emblem" prefix="emblems" />
       </div>
     </div>
     <div id="FormationCards">
-      <h2>Formation</h2>
-      <NonPlayerCard :name="formation" prefix="formations" />
+      <h2 class="subtitle">Formation</h2>
+      <div class="CardGroup">
+        <NonPlayerCard :name="formation" prefix="formations" />
+      </div>
     </div>
   </main>
 </template>
@@ -172,18 +174,27 @@ q {
 /* End reset stylesheet */
 
 * {
-  font-family: cursive;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .title {
-  font-size: x-large;
+  font-size: xxx-large;
+  text-align: center;
+}
+
+.subtitle {
+  font-weight: bolder;
+  font-size: xx-large;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 15px;
 }
 
 .CardGroup {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: center;
   justify-content: space-evenly;
+  gap: 4vw;
 }
 </style>
