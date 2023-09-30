@@ -5,6 +5,124 @@ import PlayerCard from './components/PlayerCard.vue';
 import NonPlayerCard from './components/NonPlayerCard.vue';
 import { players, teams, coaches, managers, formations } from '../assets/data.json';
 
+let tbl = document.getElementById("teamTable") as HTMLTableElement;
+let index = 0;
+tbl.style.border = '1px solid'
+
+let row = tbl.insertRow(index++);
+let cell1 = row.insertCell(0);
+let cell2 = row.insertCell(1);
+cell2.innerHTML = "Emblem";
+cell2.style.border = '1px solid';
+cell1.innerHTML = "Name";
+cell1.style.textAlign = 'center';
+cell1.style.verticalAlign = 'middle';
+cell1.style.border = '1px solid';
+
+let Xteams = [
+"Raimon"                                ,
+"Raimon II"                            ,
+"Inazuma National"                      ,
+"Royal Academy"                         ,
+"Royal Academy Redux"                   ,
+"Zeus"                                  ,
+"Alius Academy"                         ,
+"Chaos"                                 ,
+"Genesis"                               ,
+"Diamond Dust"                          ,
+"Prominence"                            ,
+"Gemini Storm"                          ,
+"Epsilon"                               ,
+"Dark Emperors"                         ,
+"Neo National"                          ,
+"International Allstars Remastered"     ,
+"Little Gigant"                         ,
+"Orpheus"                               ,
+"Unicorns"                              ,
+"The Kingdom"                           ,
+"Fire Dragon"                           ,
+"Knights of Queen"                      ,
+"The Empire"                            ,
+ "Brocken Brigade"                      ,
+ "Rose Griffons"                        ,
+ "Red Matador"                          ,
+"Dark Angels"                           ,
+"Girls Team"                            ,
+"Team Ogre"                             ,
+"Raimon (GO)"                           ,
+ "Black Templars"                       ,
+ "Ancient Darkness"                     ,
+ "Eternal Light"                        ,
+"Zero"                                  ,
+"The Sherwinds"                         ,
+"Protocol Omega"                        ,
+"Revolutionaries"                       ,
+"Fifth Sector"                          ,
+"Zanark Domain"                         ,
+"The Despairadoes"                      ,
+"New Inazuma National"                  ,
+"Inazuma Legend National"               ,
+"Dragon Link"                           ,
+"Alpine"                                ,
+"Universal Middle School"               ,
+ "White Deer"                           ,
+ "Brainwashing Junior High"             ,
+ "Kirkwood Junior High"                 ,
+ "Team Zoolan"                          ,
+ "Inazuma KFC"                          ,
+ "Golden Oldies"                        ,
+ "Protocol Omega 1.0"                   ,
+ "Protocol Omega 2.0"                   ,
+ "Protocol Omega 3.0"                   ,
+ "Mirage Academy"                       ,
+ "Mount Olympus"                        ,
+ "Royal Academy (GO)"                   ,
+ "Almighty Faith"                       ,
+ "Milky Way Charter"                    ,
+ "Pirates Cove Merchant Marine Academy" ,
+ "Lunar Sea Military Academy"           ,
+ "Perfect Cascade"                      ,
+ "El Dorado 01"                         ,
+ "El Dorado 02"                         ,
+ "El Dorado 03"                         ,
+ "Chrono Storm"                         ,
+ "Zan"                                  ,
+ "Gahl"                                 ,
+ "Gihl"                                 ,
+ "Ragnah"                               ,
+ "Lunar Howl"                           ,
+ "Nosfanatica"                          ,
+ "Children of the Night"                ,
+ "Earth Eleven"                         ,
+ "Japanese Resistance"                  ,
+ "Fire Dragon (GO)"                     ,
+ "Big Waves"                            ,
+ "Shamshir"                             ,
+ "Muay Tigers"                          ,
+ "Storm Wolves"                         ,
+ "Naiadi Eleven"                        ,
+ "Silica Eleven"                        ,
+ "Fertilia Eleven"                      ,
+ "Magmavia Eleven"                      ,
+ "Falam Medius"                         ,
+ "Ixar Fleet"                           ,
+ "Big Bang"                             ,
+ "Supernova"                            ,
+ "Space Rankers"                        
+];
+
+for (const team of Xteams) {
+  let row = tbl.insertRow(index++);
+  let cell1 = row.insertCell(0);
+  let cell2 = row.insertCell(1);
+  cell2.innerHTML = "<img style='width: 40%' src=assets/emblems/" + team.split(' ').join('_') + ".png />";
+  cell2.style.border = '1px solid';
+  cell1.innerHTML = team;
+  cell1.style.textAlign = 'center';
+  cell1.style.verticalAlign = 'middle';
+  cell1.style.border = '1px solid';
+}
+
 function name_to_position(pos: string): Position {
   switch (pos) {
     case 'GK':
@@ -172,4 +290,5 @@ chooseRandom();
   background-color: #50c878;
   cursor: pointer;
 }
+
 </style>
