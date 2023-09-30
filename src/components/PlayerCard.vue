@@ -8,10 +8,6 @@ interface Props {
   index: Number;
 }
 
-const props = defineProps<Props>();
-
-const imgPath = name_to_img(props.team, 'emblems');
-
 function position_to_style(position: Position): string {
   switch (position) {
     case Position.GK:
@@ -39,11 +35,13 @@ function position_to_name(position: Position): string {
   }
   return '';
 }
+
+defineProps<Props>();
 </script>
 
 <template>
   <div class="card">
-    <img :src="imgPath.toString()" :alt="name.toString()" class="image" />
+    <img :src="name_to_img(team, 'emblems').toString()" :alt="name.toString()" class="image" />
     <div class="position" :style="position_to_style(position)">
       {{ position_to_name(position) }}
     </div>
@@ -53,25 +51,6 @@ function position_to_name(position: Position): string {
 </template>
 
 <style scoped>
-.card {
-  position: relative;
-  border: 2px;
-  border-style: solid;
-  border-radius: 15px;
-  width: 100%;
-}
-
-.image {
-  width: 100%;
-  border-radius: 15px 15px 0 0;
-}
-
-.name {
-  text-align: center;
-  margin: 0;
-  margin-bottom: 10px;
-}
-
 .position {
   position: absolute;
   top: 8px;

@@ -21,7 +21,7 @@ def check_folder(data, group, group_name, prefix):
     print(missing)
 
 
-with open('../data.json', 'r') as f:
+with open('../assets/data.json', 'r') as f:
   data = load(f)
 
 check_folder(data, 'teams', 'Team Emblems', 'emblems')
