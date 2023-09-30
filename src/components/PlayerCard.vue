@@ -14,29 +14,39 @@ const imgPath = name_to_img(props.team, 'emblems');
 
 function position_to_style(position: Position): string {
   switch (position) {
-    case Position.GK: return "-webkit-text-stroke-color: orange";
-    case Position.DF: return "-webkit-text-stroke-color: green";
-    case Position.MF: return "-webkit-text-stroke-color: blue";
-    case Position.FW: return "-webkit-text-stroke-color: red";
+    case Position.GK:
+      return '-webkit-text-stroke-color: orange';
+    case Position.DF:
+      return '-webkit-text-stroke-color: green';
+    case Position.MF:
+      return '-webkit-text-stroke-color: blue';
+    case Position.FW:
+      return '-webkit-text-stroke-color: red';
   }
-  return "";
+  return '';
 }
 
 function position_to_name(position: Position): string {
   switch (position) {
-    case Position.GK: return "GK";
-    case Position.DF: return "DF";
-    case Position.MF: return "MF";
-    case Position.FW: return "FW";
+    case Position.GK:
+      return 'GK';
+    case Position.DF:
+      return 'DF';
+    case Position.MF:
+      return 'MF';
+    case Position.FW:
+      return 'FW';
   }
-  return "";
+  return '';
 }
 </script>
 
 <template>
   <div class="card">
-    <img :src="imgPath.toString()" :alt="name.toString()" class="image"/>
-    <div class="position" :style="position_to_style(position)">{{ position_to_name(position) }}</div>
+    <img :src="imgPath.toString()" :alt="name.toString()" class="image" />
+    <div class="position" :style="position_to_style(position)">
+      {{ position_to_name(position) }}
+    </div>
     <div class="index">{{ index }}</div>
     <h2 class="name">{{ name }}</h2>
   </div>
@@ -59,7 +69,7 @@ function position_to_name(position: Position): string {
 .name {
   text-align: center;
   margin: 0;
-  margin-bottom: 10px
+  margin-bottom: 10px;
 }
 
 .position {

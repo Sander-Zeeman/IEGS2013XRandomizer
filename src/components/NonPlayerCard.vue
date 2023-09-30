@@ -13,7 +13,7 @@ const imgPath = name_to_img(props.name, props.prefix);
 
 <template>
   <div class="card">
-    <img :src="imgPath.toString()" :alt="name.toString()" class="image"/>
+    <img :src="imgPath.toString()" :alt="name.toString()" class="image" />
     <h2 class="name">{{ name }}</h2>
   </div>
 </template>
@@ -34,6 +34,6 @@ const imgPath = name_to_img(props.name, props.prefix);
 .name {
   text-align: center;
   margin: 0;
-  margin-bottom: 10px
+  margin-bottom: 10px;
 }
 </style>
