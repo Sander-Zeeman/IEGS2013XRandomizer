@@ -57,7 +57,7 @@ defineProps<Props>();
   left: 16px;
   font-size: xx-large;
   color: white;
-  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-width: 2px;
 }
 
 .index {
@@ -66,7 +66,7 @@ defineProps<Props>();
   right: 16px;
   font-size: xx-large;
   color: white;
-  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: black;
 }
 </style>
