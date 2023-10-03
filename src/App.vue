@@ -17,6 +17,7 @@ import {
   chooseFormation
 } from './utility';
 
+import Header from './components/Header.vue';
 import PlayerCardCollection from './components/PlayerCardCollection.vue';
 import NonPlayerCardCollection from './components/NonPlayerCardCollection.vue';
 import { players, teams, coaches, managers, formations } from '@/../assets/data.json';
@@ -54,16 +55,23 @@ function chooseRandom() {
   nonPlayerKey.value += 1;
 }
 
+function flipHideCard() {
+  hideCards.value = !hideCards.value;
+
+  playerKey.value += 1;
+  nonPlayerKey.value += 1;
+}
+
 chooseRandom();
 </script>
 
 <template>
   <main>
-    <!-- Header -- Settings, Title, Button -->
-    <h1 class="title">Inazuma Eleven GO Strikers 2013 Xtreme Randomizer</h1>
-    <div class="ButtonWrapper">
-      <button class="Button" @click="chooseRandom">Randomize</button>
-    </div>
+    <Header
+      @flipHideCard="flipHideCard"
+      @randomize="chooseRandom"
+      :hideCards="hideCards"
+    />
     <PlayerCardCollection
       :key="playerKey"
       :players="chosenPlayers"
@@ -82,22 +90,4 @@ chooseRandom();
 </template>
 
 <style scoped>
-.title {
-  font-size: xxx-large;
-  text-align: center;
-}
-
-.ButtonWrapper {
-  width: 100%;
-  text-align: center;
-}
-
-.Button {
-  margin-top: 25px;
-  width: 200px;
-  height: 50px;
-  border-radius: 15px;
-  background-color: #50c878;
-  cursor: pointer;
-}
 </style>

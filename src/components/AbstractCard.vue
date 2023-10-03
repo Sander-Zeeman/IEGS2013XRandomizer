@@ -17,7 +17,7 @@ defineEmits(['reveal']);
   <div class="card">
     <div v-if="revealed">
       <img :src="name_to_img(img_name, prefix).toString()" alt="Revealed" class="image" />
-      <slot></slot>
+      <slot />
       <h2 class="name">{{ name }}</h2>
     </div>
     <div v-else>
