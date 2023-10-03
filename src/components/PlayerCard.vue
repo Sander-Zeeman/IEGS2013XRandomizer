@@ -17,7 +17,13 @@ defineEmits(['reveal']);
 </script>
 
 <template>
-  <AbstractCard @reveal="$emit('reveal')" :name="name" :img_name="team" prefix="emblems" :revealed="revealed">
+  <AbstractCard
+    @reveal="$emit('reveal')"
+    :name="name"
+    :img_name="team"
+    prefix="emblems"
+    :revealed="revealed"
+  >
     <div class="position" :style="position_to_style(position)">
       {{ position_to_name(position) }}
     </div>

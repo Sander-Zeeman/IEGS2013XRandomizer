@@ -12,7 +12,13 @@ defineEmits(['reveal']);
 </script>
 
 <template>
-  <AbstractCard @reveal="$emit('reveal')" :name="name" :img_name="name" :prefix="prefix" :revealed="revealed"/>
+  <AbstractCard
+    @reveal="$emit('reveal')"
+    :name="name"
+    :img_name="name"
+    :prefix="prefix"
+    :revealed="revealed"
+  />
 </template>
 
 <style scoped></style>

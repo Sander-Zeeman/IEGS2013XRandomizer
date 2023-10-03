@@ -67,16 +67,8 @@ chooseRandom();
 
 <template>
   <main>
-    <Header
-      @flipHideCard="flipHideCard"
-      @randomize="chooseRandom"
-      :hideCards="hideCards"
-    />
-    <PlayerCardCollection
-      :key="playerKey"
-      :players="chosenPlayers"
-      :hideCards="hideCards"
-    />
+    <Header @flipHideCard="flipHideCard" @randomize="chooseRandom" :hideCards="hideCards" />
+    <PlayerCardCollection :key="playerKey" :players="chosenPlayers" :hideCards="hideCards" />
     <NonPlayerCardCollection
       :key="nonPlayerKey"
       :coach="chosenCoach"
@@ -89,5 +81,4 @@ chooseRandom();
   </main>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
