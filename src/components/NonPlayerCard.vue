@@ -1,19 +1,18 @@
 <script setup lang="ts">
-import { name_to_img } from '@/utility';
+import AbstractCard from './AbstractCard.vue';
 
 interface Props {
   name: String;
   prefix: String;
+  revealed: boolean;
 }
 
 defineProps<Props>();
+defineEmits(['reveal']);
 </script>
 
 <template>
-  <div class="card">
-    <img :src="name_to_img(name, prefix).toString()" :alt="name.toString()" class="image" />
-    <h2 class="name">{{ name }}</h2>
-  </div>
+  <AbstractCard @reveal="$emit('reveal')" :name="name" :img_name="name" :prefix="prefix" :revealed="revealed"/>
 </template>
 
 <style scoped></style>

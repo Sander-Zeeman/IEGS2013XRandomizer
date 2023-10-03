@@ -1,86 +1,57 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { type Player, Position, chooseNRandom, createPlayer } from './utility';
-import PlayerCard from './components/PlayerCard.vue';
-import NonPlayerCard from './components/NonPlayerCard.vue';
-import { players, teams, coaches, managers, formations } from '../assets/data.json';
+import {
+  type Player,
+  type Team,
+  type Coach,
+  type Manager,
+  type Formation,
+  name_to_position
+} from './types';
+import {
+  choosePlayers,
+  chooseCoach,
+  chooseManager,
+  chooseEmblem,
+  chooseOutfit,
+  chooseFormation
+} from './utility';
 
-function name_to_position(pos: string): Position {
-  switch (pos) {
-    case 'GK':
-      return Position.GK;
-    case 'DF':
-      return Position.DF;
-    case 'MF':
-      return Position.MF;
-    case 'FW':
-      return Position.FW;
-  }
-  return Position.None;
-}
-
-const m_players: Player[] = players.map((player) =>
-  createPlayer(player.name, name_to_position(player.position), parseInt(player.index), player.team)
-);
-const m_teams = teams.map((team) => team.name);
-const m_coaches = coaches.map((coach) => coach.name);
-const m_managers = managers.map((manager) => manager.name);
-const m_formations = formations.map((formation) => formation.name);
+import PlayerCardCollection from './components/PlayerCardCollection.vue';
+import NonPlayerCardCollection from './components/NonPlayerCardCollection.vue';
+import { players, teams, coaches, managers, formations } from '@/../assets/data.json';
 
 const chosenPlayers = ref<Player[]>([]);
-const chosenCoach = ref('');
-const chosenManager = ref('');
-const chosenOutfit = ref('');
-const chosenEmblem = ref('');
-const chosenFormation = ref('');
+const chosenCoach = ref<Coach>({ name: '' });
+const chosenManager = ref<Manager>({ name: '' });
+const chosenOutfit = ref<Team>({ name: '', has_uniform: false });
+const chosenEmblem = ref<Team>({ name: '', has_uniform: false });
+const chosenFormation = ref<Formation>({ name: '' });
+const hideCards = ref(false);
 
-function choosePlayers() {
-  const GKs = m_players.filter((player) => player.position == Position.GK);
-  const DFs = m_players.filter((player) => player.position == Position.DF);
-  const MFs = m_players.filter((player) => player.position == Position.MF);
-  const FWs = m_players.filter((player) => player.position == Position.FW);
-
-  const chosenGKs = chooseNRandom<Player>(GKs, 2);
-  const chosenDFs = chooseNRandom<Player>(DFs, 4);
-  const chosenMFs = chooseNRandom<Player>(MFs, 5);
-  const chosenFWs = chooseNRandom<Player>(FWs, 5);
-
-  console.table(chosenGKs);
-  console.table(chosenDFs);
-  console.table(chosenMFs);
-  console.table(chosenFWs);
-
-  chosenPlayers.value = chosenGKs.concat(chosenDFs, chosenMFs, chosenFWs);
-}
-
-function chooseCoach() {
-  chosenCoach.value = chooseNRandom<string>(m_coaches, 1)[0];
-}
-
-function chooseManager() {
-  chosenManager.value = chooseNRandom<string>(m_managers, 1)[0];
-}
-
-function chooseOutfit() {
-  const outfitTeams = teams.filter((team) => team.has_uniform).map((team) => team.name);
-  chosenOutfit.value = chooseNRandom<string>(outfitTeams, 1)[0];
-}
-
-function chooseEmblem() {
-  chosenEmblem.value = chooseNRandom<string>(m_teams, 1)[0];
-}
-
-function chooseFormation() {
-  chosenFormation.value = chooseNRandom<string>(m_formations, 1)[0];
-}
+const playerKey = ref(0);
+const nonPlayerKey = ref(0);
 
 function chooseRandom() {
-  choosePlayers();
-  chooseCoach();
-  chooseManager();
-  chooseOutfit();
-  chooseEmblem();
-  chooseFormation();
+  const m_players = players.map(
+    (player) =>
+      <Player>{
+        index: parseInt(player.index),
+        team: player.team,
+        position: name_to_position(player.position),
+        name: player.name
+      }
+  );
+
+  chosenPlayers.value = choosePlayers(m_players);
+  chosenCoach.value = chooseCoach(coaches);
+  chosenManager.value = chooseManager(managers);
+  chosenOutfit.value = chooseOutfit(teams);
+  chosenEmblem.value = chooseEmblem(teams);
+  chosenFormation.value = chooseFormation(formations);
+
+  playerKey.value += 1;
+  nonPlayerKey.value += 1;
 }
 
 chooseRandom();
@@ -88,75 +59,32 @@ chooseRandom();
 
 <template>
   <main>
+    <!-- Header -- Settings, Title, Button -->
     <h1 class="title">Inazuma Eleven GO Strikers 2013 Xtreme Randomizer</h1>
     <div class="ButtonWrapper">
       <button class="Button" @click="chooseRandom">Randomize</button>
     </div>
-    <div id="PlayerCards">
-      <h2 class="subtitle">Players</h2>
-      <div class="CardGroup">
-        <div v-for="(player, idx) in chosenPlayers" :key="idx">
-          <PlayerCard
-            :name="player.name"
-            :team="player.team"
-            :position="player.position"
-            :index="player.index"
-          />
-        </div>
-      </div>
-    </div>
-    <div id="SupportCards">
-      <div class="CardGroup">
-        <div>
-          <h3 class="subtitle">Coach</h3>
-          <NonPlayerCard :name="chosenCoach" prefix="coaches" />
-        </div>
-        <div>
-          <h3 class="subtitle">Manager</h3>
-          <NonPlayerCard :name="chosenManager" prefix="managers" />
-        </div>
-      </div>
-    </div>
-    <div id="OutfitCards">
-      <div class="CardGroup">
-        <div>
-          <h3 class="subtitle">Outfit</h3>
-          <NonPlayerCard :name="chosenOutfit" prefix="emblems" />
-        </div>
-        <div id="FormationCards">
-          <h3 class="subtitle">Formation</h3>
-          <NonPlayerCard :name="chosenFormation" prefix="formations" />
-        </div>
-        <div>
-          <h3 class="subtitle">Emblem</h3>
-          <NonPlayerCard :name="chosenEmblem" prefix="emblems" />
-        </div>
-      </div>
-    </div>
+    <PlayerCardCollection
+      :key="playerKey"
+      :players="chosenPlayers"
+      :hideCards="hideCards"
+    />
+    <NonPlayerCardCollection
+      :key="nonPlayerKey"
+      :coach="chosenCoach"
+      :manager="chosenManager"
+      :emblem="chosenEmblem"
+      :outfit="chosenOutfit"
+      :formation="chosenFormation"
+      :hideCards="hideCards"
+    />
   </main>
-  <footer style="height: 20px"></footer>
 </template>
 
 <style scoped>
 .title {
   font-size: xxx-large;
   text-align: center;
-}
-
-.subtitle {
-  font-weight: bolder;
-  font-size: xx-large;
-  text-align: center;
-  margin-top: 50px;
-  margin-bottom: 15px;
-}
-
-.CardGroup {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  gap: 4vw;
 }
 
 .ButtonWrapper {
