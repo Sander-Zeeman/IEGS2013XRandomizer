@@ -1,1 +1,0 @@
-import{_ as e}from"./Draft.vue_vue_type_script_setup_true_lang-96a87cd3.js";import{d as o,c as r,o as t}from"./index-79646054.js";import"./NonPlayerCard.vue_vue_type_script_setup_true_lang-b760dc4a.js";const m=o({__name:"DoubleDraftView",setup(a){return(_,n)=>(t(),r(e,{optionsPerDraft:2,two_player:!0}))}});export{m as default};
