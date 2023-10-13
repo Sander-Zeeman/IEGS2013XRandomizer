@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import AbstractCard from './AbstractCard.vue';
 
-import { Position, position_to_name, position_to_style } from '@/types';
+import { Position } from '@/scripts/types';
+import { position_to_name, position_to_style } from '@/scripts/type_util';
 
 interface Props {
   name: String;

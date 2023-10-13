@@ -1,10 +1,4 @@
-export enum Position {
-  None,
-  GK,
-  DF,
-  MF,
-  FW
-}
+import { Position } from '@/scripts/types';
 
 export function position_to_style(position: Position): string {
   switch (position) {
@@ -46,28 +40,4 @@ export function name_to_position(pos: string): Position {
       return Position.FW;
   }
   return Position.None;
-}
-
-export interface Player {
-  name: string;
-  position: Position;
-  index: number;
-  team: string;
-}
-
-export interface Team {
-  has_uniform: boolean;
-  name: string;
-}
-
-export interface Coach {
-  name: string;
-}
-
-export interface Manager {
-  name: string;
-}
-
-export interface Formation {
-  name: string;
 }

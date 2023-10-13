@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { name_to_img } from '@/utility';
+import { name_to_img } from '@/scripts/utility';
 
 interface Props {
   name: String;
@@ -37,7 +37,7 @@ defineEmits(['reveal']);
   border: 2px;
   border-style: solid;
   border-radius: 15px;
-  width: 175px;
+  width: 30%;
 }
 
 .image {

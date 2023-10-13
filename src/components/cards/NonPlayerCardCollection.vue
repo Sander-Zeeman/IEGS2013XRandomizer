@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { type Coach, type Manager, type Team, type Formation } from '@/types';
+import { type Coach, type Manager, type Team, type Formation } from '@/scripts/types';
 import NonPlayerCard from './NonPlayerCard.vue';
 
 interface Props {
