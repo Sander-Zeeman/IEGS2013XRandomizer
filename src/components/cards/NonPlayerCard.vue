@@ -20,5 +20,3 @@ defineEmits(['reveal']);
     :revealed="revealed"
   />
 </template>
-
-<style scoped></style>

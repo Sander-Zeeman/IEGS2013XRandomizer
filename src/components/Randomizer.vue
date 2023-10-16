@@ -47,7 +47,7 @@ chooseRandom();
 
 <template>
   <div>
-    <button @click="chooseRandom">Randomize</button>
+    <button class="button" @click="chooseRandom">Randomize</button>
     <PlayerCardCollection :key="playerKey" :players="chosenPlayers" :hideCards="hideCards" />
     <NonPlayerCardCollection
       :key="nonPlayerKey"
@@ -60,3 +60,11 @@ chooseRandom();
     />
   </div>
 </template>
+
+<style scoped>
+.button {
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  text-align: center;
+}
+</style>

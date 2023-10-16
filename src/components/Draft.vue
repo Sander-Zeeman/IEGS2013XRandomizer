@@ -126,8 +126,9 @@ function handleDoubleChoice(player0: Player, player1: Player, position: Position
 </script>
 
 <template>
-  <button @click="reset">Reset</button>
+  <button class="button" @click="reset">Reset</button>
   <h1
+    class="title"
     v-if="
       two_player &&
       (selectedGKs0.length !== GKCount ||
@@ -136,7 +137,7 @@ function handleDoubleChoice(player0: Player, player1: Player, position: Position
         selectedFWs0.length !== FWCount)
     "
   >
-    Player {{ turn }}
+    Player {{ turn + 1 }}'s turn.
   </h1>
   <div v-if="selectedGKs0.length < GKCount">
     <DraftPick
@@ -175,7 +176,7 @@ function handleDoubleChoice(player0: Player, player1: Player, position: Position
     />
   </div>
   <div v-else-if="two_player">
-    <h1>Player 0</h1>
+    <h1 class="title">Player 1's selection.</h1>
     <PlayerCardCollection :players="selectedPlayers0" :hideCards="false" />
     <NonPlayerCard
       @reveal="() => {}"
@@ -183,7 +184,7 @@ function handleDoubleChoice(player0: Player, player1: Player, position: Position
       prefix="formations"
       :revealed="true"
     />
-    <h1>Player 1</h1>
+    <h1 class="title">Player 2's selection</h1>
     <PlayerCardCollection :players="selectedPlayers1" :hideCards="false" />
     <NonPlayerCard
       @reveal="() => {}"
@@ -202,3 +203,18 @@ function handleDoubleChoice(player0: Player, player1: Player, position: Position
     />
   </div>
 </template>
+
+<style scoped>
+.title {
+  font-size: 3em;
+  text-align: center;
+  font-weight: bold;
+  padding: 1em;
+}
+
+.button {
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  text-align: center;
+}
+</style>

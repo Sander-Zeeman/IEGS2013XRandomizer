@@ -19,7 +19,7 @@ const revealed = ref(Array(5).fill(!props.hideCards));
 
 <template>
   <div class="CardGroup">
-    <div>
+    <div class="subgroup">
       <h3 class="subtitle">Coach</h3>
       <NonPlayerCard
         @reveal="revealed[0] = true"
@@ -28,7 +28,7 @@ const revealed = ref(Array(5).fill(!props.hideCards));
         :revealed="revealed[0]"
       />
     </div>
-    <div>
+    <div class="subgroup">
       <h3 class="subtitle">Manager</h3>
       <NonPlayerCard
         @reveal="revealed[1] = true"
@@ -37,7 +37,7 @@ const revealed = ref(Array(5).fill(!props.hideCards));
         :revealed="revealed[1]"
       />
     </div>
-    <div>
+    <div class="subgroup">
       <h3 class="subtitle">Outfit</h3>
       <NonPlayerCard
         @reveal="revealed[2] = true"
@@ -46,7 +46,7 @@ const revealed = ref(Array(5).fill(!props.hideCards));
         :revealed="revealed[2]"
       />
     </div>
-    <div>
+    <div class="subgroup">
       <h3 class="subtitle">Emblem</h3>
       <NonPlayerCard
         @reveal="revealed[3] = true"
@@ -55,7 +55,7 @@ const revealed = ref(Array(5).fill(!props.hideCards));
         :revealed="revealed[3]"
       />
     </div>
-    <div>
+    <div class="subgroup">
       <h3 class="subtitle">Formation</h3>
       <NonPlayerCard
         @reveal="revealed[4] = true"
@@ -69,18 +69,25 @@ const revealed = ref(Array(5).fill(!props.hideCards));
 
 <style scoped>
 .subtitle {
-  font-weight: bolder;
-  font-size: xx-large;
-  text-align: center;
-  margin-top: 50px;
-  margin-bottom: 15px;
+  font-weight: bold;
+  font-size: 2rem;
+  padding: 1rem;
+}
+
+.subgroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .CardGroup {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-evenly;
-  gap: 4vw;
+  flex-direction: row;
+  justify-content: center;
+  align-items: baseline;
+  gap: 3rem;
+  padding: 1rem;
 }
 </style>

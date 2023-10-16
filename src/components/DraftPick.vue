@@ -11,24 +11,42 @@ defineEmits(['choose']);
 </script>
 
 <template>
-  <div class="box" v-for="(player, idx) in choice" :key="idx">
-    <PlayerCard
-      @reveal="() => {}"
-      :name="player.name"
-      :team="player.team"
-      :position="player.position"
-      :index="player.index"
-      :revealed="true"
-      style="width: 20%; margin: 10px"
-      @click="$emit('choose', player, choice.filter((c) => c != player)[0])"
-    />
+  <div class="box">
+    <div v-for="(player, idx) in choice" :key="idx">
+      <PlayerCard
+        @reveal="() => {}"
+        :name="player.name"
+        :team="player.team"
+        :position="player.position"
+        :index="player.index"
+        :revealed="true"
+        @click="$emit('choose', player, choice.filter((c) => c != player)[0])"
+      />
+    </div>
   </div>
 </template>
 
 <style scoped>
-.box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@media only screen and (max-width: 500px) {
+  .box {
+    margin: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+  }
+}
+@media only screen and (min-width: 501px) {
+  .box {
+    margin: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+    gap: 3rem;
+  }
 }
 </style>

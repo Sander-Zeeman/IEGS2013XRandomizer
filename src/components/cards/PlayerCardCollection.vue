@@ -43,38 +43,19 @@ const cards = ref(
 
 <style scoped>
 .subtitle {
-  font-weight: bolder;
-  font-size: 60px;
+  font-weight: bold;
+  font-size: 2rem;
   text-align: center;
-  margin-top: 50px;
-  margin-bottom: 15px;
+  padding: 1rem;
 }
 
-@media only screen and (min-width: 600px) {
-  .CardGroup {
-    padding: 30px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    width: 100%;
-    height: 100%;
-    gap: 30px;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  .CardGroup {
-    padding: 30px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(8, 1fr);
-    width: 80%;
-    height: 100%;
-    gap: 30px;
-    justify-content: center;
-    align-items: center;
-  }
+.CardGroup {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 1rem;
 }
 </style>

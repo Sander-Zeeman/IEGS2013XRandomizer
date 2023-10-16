@@ -37,18 +37,18 @@ defineEmits(['reveal']);
   position: absolute;
   top: 8px;
   left: 16px;
-  font-size: xx-large;
+  font-size: 2rem;
   color: white;
-  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-width: 1.5px;
 }
 
 .index {
   position: absolute;
   top: 8px;
   right: 16px;
-  font-size: xx-large;
+  font-size: 2rem;
   color: white;
-  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-width: 1.5px;
   -webkit-text-stroke-color: black;
 }
 </style>

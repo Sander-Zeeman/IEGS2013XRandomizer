@@ -37,17 +37,22 @@ defineEmits(['reveal']);
   border: 2px;
   border-style: solid;
   border-radius: 15px;
-  width: 30%;
+  width: 25vw;
+  max-width: 200px;
 }
 
 .image {
   width: 100%;
+  height: 25vw;
+  max-height: 200px;
   border-radius: 15px 15px 0 0;
+  object-fit: fill;
 }
 
 .name {
+  font-size: 1.5rem;
   text-align: center;
   border-radius: 0 0 15px 15px;
-  width: 100%;
+  padding: 2px;
 }
 </style>
