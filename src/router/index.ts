@@ -28,6 +28,10 @@ const router = createRouter({
       path: '/draft-double',
       name: 'draft (double)',
       component: () => import('@/views/DoubleDraftView.vue')
+    },
+    {
+      path: '/:pathMatch(.*)',
+      component: HomeView
     }
   ]
 });
