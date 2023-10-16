@@ -1,0 +1,1 @@
+import{D as o}from"./Draft-c2abec22.js";import{d as e,c as r,o as t}from"./index-36c2da02.js";import"./NonPlayerCard.vue_vue_type_script_setup_true_lang-ce083314.js";const _=e({__name:"SoloDraftView",setup(a){return(p,s)=>(t(),r(o,{optionsPerDraft:3,two_player:!1}))}});export{_ as default};
