@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ref } from 'vue';
+
 const menu = [
   {
     href: '/',
@@ -26,10 +28,26 @@ const menu = [
     hiddenOnCollapse: true
   }
 ];
+
+const collapsed = ref(true);
+
+function onToggleCollapse(c: boolean) {
+  collapsed.value = c;
+}
 </script>
 
 <template>
-  <sidebar-menu :menu="menu" :collapsed="true" :relative="true" width="100vw" />
+  <sidebar-menu
+    @update:collapsed="onToggleCollapse"
+    :menu="menu"
+    :collapsed="true"
+    :relative="true"
+    width="100vw"
+    widthCollapsed="100vw"
+  >
+    <template v-if="!collapsed" v-slot:toggle-icon>▲</template>
+    <template v-else v-slot:toggle-icon>▼</template>
+  </sidebar-menu>
 
   <RouterView />
 </template>
