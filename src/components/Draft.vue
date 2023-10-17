@@ -144,7 +144,7 @@ function handleDoubleChoice(player0: Player, player1: Player, position: Position
       :choice="GKOptions.splice(0, props.optionsPerDraft)"
       @choose="
         (p0, p1) =>
-          two_player ? handleDoubleChoice(p0, p1, Position.GK) : handleSoloChoice(p0, Position.GK)
+          two_player ? (turn ? handleDoubleChoice(p1, p0, Position.GK) : handleDoubleChoice(p0, p1, Position.GK)) : handleSoloChoice(p0, Position.GK)
       "
     />
   </div>
@@ -153,7 +153,7 @@ function handleDoubleChoice(player0: Player, player1: Player, position: Position
       :choice="DFOptions.splice(0, props.optionsPerDraft)"
       @choose="
         (p0, p1) =>
-          two_player ? handleDoubleChoice(p0, p1, Position.DF) : handleSoloChoice(p0, Position.DF)
+          two_player ? (turn ? handleDoubleChoice(p1, p0, Position.DF) : handleDoubleChoice(p0, p1, Position.DF)) : handleSoloChoice(p0, Position.DF)
       "
     />
   </div>
@@ -162,7 +162,7 @@ function handleDoubleChoice(player0: Player, player1: Player, position: Position
       :choice="MFOptions.splice(0, props.optionsPerDraft)"
       @choose="
         (p0, p1) =>
-          two_player ? handleDoubleChoice(p0, p1, Position.MF) : handleSoloChoice(p0, Position.MF)
+          two_player ? (turn ? handleDoubleChoice(p1, p0, Position.MF) : handleDoubleChoice(p0, p1, Position.MF)) : handleSoloChoice(p0, Position.MF)
       "
     />
   </div>
@@ -171,7 +171,7 @@ function handleDoubleChoice(player0: Player, player1: Player, position: Position
       :choice="FWOptions.splice(0, props.optionsPerDraft)"
       @choose="
         (p0, p1) =>
-          two_player ? handleDoubleChoice(p0, p1, Position.FW) : handleSoloChoice(p0, Position.FW)
+          two_player ? (turn ? handleDoubleChoice(p1, p0, Position.FW) : handleDoubleChoice(p0, p1, Position.FW)) : handleSoloChoice(p0, Position.FW)
       "
     />
   </div>
